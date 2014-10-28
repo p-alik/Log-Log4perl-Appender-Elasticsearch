@@ -1,5 +1,6 @@
 Log::Log4perl::Appender::Elasticsearch - Log to Elasticsearch
 
+```perl
 use Log::Log4perl;
 
 Log::Log4perl->init(\<<'HERE');
@@ -23,14 +24,4 @@ log4perl.appender.ES.headers.User-Agent = foo
 HERE
 
 Log::Log4perl::get_logger()->info("OK");
-# look up:
-# curl -XPOST 'http://localhost:9200/log4perl/_search' -d \
-# '{"query": {"query_string": {"query": "level:INFO AND message:OK"}}}'
-# ...
-#         "_source": {
-#           "module": "main::__ANON__",
-#           "line": "60",
-#           "level": "INFO",
-#           "message": "OK"
-#        }
-
+```
