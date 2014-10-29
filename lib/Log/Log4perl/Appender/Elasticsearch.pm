@@ -66,11 +66,11 @@ our $VERSION = '0.02';
 
 =head1 DESCRIPTION
 
-This is a simple appender for providing the log messages to elasticsearch. LWP::UserAgent is used for message sendig via PUT request.
+This is a simple appender for providing the log messages to elasticsearch. LWP::UserAgent is used for message sending via PUT request.
 
 =head1 OPTIONS
 
-=over4
+=over 4
 
 =item nodes
 
@@ -86,7 +86,9 @@ The name of the type in given index the message belongs to.
 
 =item use_https
 
-0|1
+0|1 global https setting for all nodes
+
+the individual https setting possible too: C<log4perl.appender.ES.nodes = https://user:password@node1:9200,localhost:9200>
 
 =item user_agent
 
