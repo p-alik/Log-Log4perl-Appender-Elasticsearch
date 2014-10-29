@@ -20,11 +20,11 @@ Log::Log4perl::Appender::Elasticsearch - Log to Elasticsearch
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -65,6 +65,42 @@ our $VERSION = '0.01';
 
 
 =head1 DESCRIPTION
+
+This is a simple appender for providing the log messages to elasticsearch. LWP::UserAgent is used for message sendig via PUT request.
+
+=head1 OPTIONS
+
+=over4
+
+=item nodes
+
+a comma separeted list of nodes. The message will be sent to the next node only if previous request failed
+
+=item index
+
+The name of the elasticsearch index the message will be stored in.
+
+=item type
+
+The name of the type in given index the message belongs to.
+
+=item use_https
+
+0|1
+
+=item user_agent
+
+LWP::UserAgent parameters.
+
+C<log4perl.appender.ES.user_agent.timeout = 5>
+
+=item headers
+
+HTTP::Headers parameters
+
+C<log4perl.appender.ES.headers.User-Agent = foo>
+
+=back
 
 =cut
 
