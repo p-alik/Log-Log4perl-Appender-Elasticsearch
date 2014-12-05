@@ -15,7 +15,7 @@ use URI;
 
 =head1 NAME
 
-Log::Log4perl::Appender::Elasticsearch - Log to Elasticsearch
+Log::Log4perl::Appender::Elasticsearch - implements appending to Elasticsearch
 
 =head1 VERSION
 
@@ -62,10 +62,6 @@ our $VERSION = '0.03';
     #           "message": "OK"
     #        }
 
-
-=head1 DESCRIPTION
-
-This is a simple appender for providing the log messages to elasticsearch. LWP::UserAgent is used for message sending via PUT request.
 
 =head1 OPTIONS
 
