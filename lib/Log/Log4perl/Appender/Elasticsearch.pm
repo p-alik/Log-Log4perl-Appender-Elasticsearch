@@ -5,7 +5,6 @@ use warnings;
 our @ISA = qw(Log::Log4perl::Appender);
 
 use Carp;
-use Data::UUID::LibUUID;
 use HTTP::Headers();
 use HTTP::Request();
 use JSON;
@@ -169,13 +168,11 @@ sub _init {
 
 sub _send_request {
     my ($self, $b) = @_;
-    my $id = Data::UUID::LibUUID::new_uuid_string(2);
-
     my @nodes = @{ $self->{_nodes} };
     my (@errors, $ok);
     do {
         my $node = shift @nodes;
-        my $uri  = $self->_uri($node, $id);
+        my $uri  = $self->_uri($node);
         my $req  = $self->_request($uri, $b);
 
         my $resp = $self->{_user_agent}->request($req);
@@ -190,10 +187,9 @@ sub _send_request {
 } ## end sub _send_request
 
 sub _uri {
-    my ($self, $node, $id) = @_;
+    my ($self, $node) = @_;
     my $uri = $node->clone;
-    $uri->path(join '', $uri->path,
-        join('/', $self->{_index}, $self->{_type}, $id));
+    $uri->path(join '', $uri->path, join('/', $self->{_index}, $self->{_type}, ''));
 
     return $uri;
 } ## end sub _uri
@@ -219,7 +215,7 @@ sub _request {
     my $data = encode_json($b);
 
     return HTTP::Request->new(
-        PUT => $uri,
+        POST => $uri,
         $self->_headers($uri),
         $data
     );
