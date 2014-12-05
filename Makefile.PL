@@ -14,7 +14,6 @@ WriteMakefile(
     CONFIGURE_REQUIRES => { 'ExtUtils::MakeMaker' => 0, },
     BUILD_REQUIRES     => { 'Test::More' => 0.98, },
     PREREQ_PM          => {
-        'Data::UUID::LibUUID' => 0.05,
         'HTTP::Headers'       => 6.05,
         'HTTP::Request'       => 6.00,
         'JSON'                => 2.61,
