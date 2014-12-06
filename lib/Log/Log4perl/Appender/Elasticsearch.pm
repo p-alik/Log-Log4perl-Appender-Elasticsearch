@@ -19,11 +19,11 @@ Log::Log4perl::Appender::Elasticsearch - implements appending to Elasticsearch
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 SYNOPSIS
 
@@ -185,7 +185,8 @@ sub _send_request {
 sub _uri {
     my ($self, $node) = @_;
     my $uri = $node->clone;
-    $uri->path(join '', $uri->path, join('/', $self->{_index}, $self->{_type}, ''));
+    $uri->path(join '', $uri->path,
+        join('/', $self->{_index}, $self->{_type}, ''));
 
     return $uri;
 } ## end sub _uri
@@ -221,7 +222,7 @@ sub _prepare_body {
     my ($self, %p) = @_;
 
     my $b = {};
-    foreach my $k (keys $self->{_body}) {
+    foreach my $k (keys %{ $self->{_body} }) {
         my $v
             = $self->{_body}{$k}
             ->render($p{message}, $p{log4p_category}, $p{log4p_level},
@@ -229,7 +230,7 @@ sub _prepare_body {
             );
 
         $b->{$k} = $v;
-    } ## end foreach my $k (keys $self->...)
+    } ## end foreach my $k (keys %{ $self...})
 
     $b->{message} = $p{message};
 
