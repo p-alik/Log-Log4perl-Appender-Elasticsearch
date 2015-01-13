@@ -239,7 +239,7 @@ sub _prepare_body {
 
 =head1 AUTHOR
 
-Alexei Pastuchov C<< <palik at cpan.com> >>
+Alexei Pastuchov C<< <palik at cpan.org> >>
 
 =head1 BUGS
 
@@ -284,7 +284,7 @@ L<https://github.com/p-alik/Log-Log4perl-Appender-Elasticsearch.git>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2014 by Alexei Pastuchov E<lt>palik at cpan.comE<gt>.
+Copyright 2014 by Alexei Pastuchov E<lt>palik at cpan.org<gt>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
