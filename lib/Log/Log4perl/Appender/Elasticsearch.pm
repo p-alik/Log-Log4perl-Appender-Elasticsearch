@@ -23,7 +23,7 @@ Version 0.04
 
 =cut
 
-our $VERSION = '0.04';
+$Log::Log4perl::Appender::Elasticsearch::VERSION = '0.05';
 
 =head1 SYNOPSIS
 
@@ -112,7 +112,7 @@ sub new {
 
 sub log {
     my ($self, %p) = @_;
-    $self->_send_request($self->_prepare_body(%p));
+    $self->_send_request(JSON::encode_json($self->_prepare_body(%p)));
 }
 
 sub _init {
@@ -163,13 +163,13 @@ sub _init {
 } ## end sub _init
 
 sub _send_request {
-    my ($self, $b) = @_;
+    my ($self, $data, $suffix) = @_;
     my @nodes = @{ $self->{_nodes} };
     my (@errors, $ok);
     do {
         my $node = shift @nodes;
-        my $uri  = $self->_uri($node);
-        my $req  = $self->_request($uri, $b);
+        my $uri  = $self->_uri($node, $suffix);
+        my $req  = $self->_request($uri, $data);
 
         my $resp = $self->{_user_agent}->request($req);
         $ok = $resp->is_success;
@@ -183,10 +183,10 @@ sub _send_request {
 } ## end sub _send_request
 
 sub _uri {
-    my ($self, $node) = @_;
+    my ($self, $node, $suffix) = @_;
     my $uri = $node->clone;
     $uri->path(join '', $uri->path,
-        join('/', $self->{_index}, $self->{_type}, ''));
+        join('/', $self->{_index}, $self->{_type}, $suffix ? $suffix : ''));
 
     return $uri;
 } ## end sub _uri
@@ -207,9 +207,7 @@ sub _headers {
 } ## end sub _headers
 
 sub _request {
-    my ($self, $uri, $b) = @_;
-
-    my $data = encode_json($b);
+    my ($self, $uri, $data) = @_;
 
     return HTTP::Request->new(
         POST => $uri,
@@ -237,46 +235,12 @@ sub _prepare_body {
     return $b;
 } ## end sub _prepare_body
 
+1;    # End of Log::Log4perl::Appender::Elasticsearch
+__END__
+
 =head1 AUTHOR
 
 Alexei Pastuchov C<< <palik at cpan.org> >>
-
-=head1 BUGS
-
-Please report any bugs or feature requests to C<bug-log-log4perl-appender-elasticsearch at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Log-Log4perl-Appender-Elasticsearch>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Log::Log4perl::Appender::Elasticsearch
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker (report bugs here)
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Log-Log4perl-Appender-Elasticsearch>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Log-Log4perl-Appender-Elasticsearch>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Log-Log4perl-Appender-Elasticsearch>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Log-Log4perl-Appender-Elasticsearch/>
-
-=back
-
 
 =head1 REPOSITORY
 
@@ -284,11 +248,9 @@ L<https://github.com/p-alik/Log-Log4perl-Appender-Elasticsearch.git>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2014 by Alexei Pastuchov E<lt>palik at cpan.org<gt>.
+Copyright 2014, 2015 by Alexei Pastuchov E<lt>palik at cpan.orgE<gt>.
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
-
-1;    # End of Log::Log4perl::Appender::Elasticsearch
