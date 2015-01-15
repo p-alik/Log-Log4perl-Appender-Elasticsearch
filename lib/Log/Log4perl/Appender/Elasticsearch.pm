@@ -19,7 +19,7 @@ Log::Log4perl::Appender::Elasticsearch - implements appending to Elasticsearch
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
