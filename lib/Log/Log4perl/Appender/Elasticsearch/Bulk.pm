@@ -16,7 +16,7 @@ Log::Log4perl::Appender::Elasticsearch::Bulk
 
 =head1 DESCRIPTION
 
-This appender is based on L<Log::Log4perl::Appender::Elasticsearch>. It buffers the logs and flush by certain buffer size or on destroy.
+This appender is based on L<Log::Log4perl::Appender::Elasticsearch>. It buffers the log entries and flush by certain buffer size or on destroy.
 
 =head1 OPTIONS
 
@@ -26,13 +26,13 @@ This appender is based on L<Log::Log4perl::Appender::Elasticsearch>. It buffers 
 
 buffer_size
 
-the number of documents in bulk load.
+the number of log entries in a bulk load.
 
 default 50
 
 =back
 
-For other options see L<Log::Log4perl::Appender::Elasticsearch>
+For further options see L<Log::Log4perl::Appender::Elasticsearch>
 
 =cut
 
