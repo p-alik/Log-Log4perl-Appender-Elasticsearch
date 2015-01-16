@@ -5,7 +5,7 @@ MANIFEST			This list of files
 README
 t/00-load.t
 t/01-es.t
-t/02-esd.t
+t/02-esb.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
