@@ -19,9 +19,9 @@ Log::Log4perl::Appender::Elasticsearch - implements appending to Elasticsearch
 
 =head1 DESCRIPTION
 
-This is a simple appender for writing log entries to Elasticsearch via L<index api|http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html>.
+This is a simple appender for writing log entries to Elasticsearch via L<Index API|http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html>.
 
-L<Log::Log4perl::Appender::Elasticsearch::Bulk> do same task by using L<bulk api|http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-bulk.html>.
+L<Log::Log4perl::Appender::Elasticsearch::Bulk> does the same task by using L<Bulk API|http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-bulk.html>.
 
 =head1 VERSION
 
