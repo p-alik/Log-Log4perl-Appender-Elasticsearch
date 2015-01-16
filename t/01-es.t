@@ -12,6 +12,7 @@ can_ok 'Log::Log4perl::Appender::Elasticsearch', qw/
     _request
     _send_request
     _uri
+    _to_json
     /;
 
 my %args = (

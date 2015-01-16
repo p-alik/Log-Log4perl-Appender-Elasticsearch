@@ -4,8 +4,6 @@ use 5.006;
 use strict;
 use warnings;
 
-use JSON;
-
 use constant _INTERNAL_DEBUG => 0;
 
 use base 'Log::Log4perl::Appender::Elasticsearch';
@@ -57,7 +55,7 @@ sub _flush {
     scalar(@{$buff}) || return;
 
     foreach (@{$buff}) {
-        $data .= join $/, '{"create":{}}', to_json($_), '';
+        $data .= join $/, '{"create":{}}', $self->_to_json($_), '';
     }
 
     if (_INTERNAL_DEBUG) {

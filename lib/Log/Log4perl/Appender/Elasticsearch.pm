@@ -130,7 +130,7 @@ sub new {
 
 sub log {
     my ($self, %p) = @_;
-    $self->_send_request(JSON::encode_json($self->_prepare_body(%p)));
+    $self->_send_request($self->_to_json($self->_prepare_body(%p)));
 }
 
 sub _init {
@@ -252,6 +252,11 @@ sub _prepare_body {
 
     return $b;
 } ## end sub _prepare_body
+
+sub _to_json {
+    my ($self, $o) = @_;
+    return JSON::encode_json($o);
+}
 
 1;    # End of Log::Log4perl::Appender::Elasticsearch
 __END__
