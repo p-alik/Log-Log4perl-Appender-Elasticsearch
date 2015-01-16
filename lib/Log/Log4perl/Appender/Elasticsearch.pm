@@ -17,6 +17,12 @@ use URI;
 
 Log::Log4perl::Appender::Elasticsearch - implements appending to Elasticsearch
 
+=head1 DESCRIPTION
+
+This is a simple appender for writing log entries to Elasticsearch via L<index api|http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html>.
+
+L<Log::Log4perl::Appender::Elasticsearch::Bulk> do same task by using L<bulk api|http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-bulk.html>.
+
 =head1 VERSION
 
 Version 0.05
@@ -67,31 +73,43 @@ $Log::Log4perl::Appender::Elasticsearch::VERSION = '0.05';
 
 =over 4
 
-=item nodes
+=item
+
+nodes
 
 a comma separeted list of nodes. The message will be sent to the next node only if previous request failed
 
-=item index
+=item
+
+index
 
 The name of the elasticsearch index the message will be stored in.
 
-=item type
+=item
+
+type
 
 The name of the type in given index the message belongs to.
 
-=item use_https
+=item
+
+use_https
 
 0|1 global https setting for all nodes
 
 the individual https setting possible too: C<log4perl.appender.ES.nodes = https://user:password@node1:9200,localhost:9200>
 
-=item user_agent
+=item
+
+user_agent
 
 LWP::UserAgent parameters.
 
 C<log4perl.appender.ES.user_agent.timeout = 5>
 
-=item headers
+=item
+
+headers
 
 HTTP::Headers parameters
 
