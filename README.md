@@ -1,5 +1,12 @@
 Log::Log4perl::Appender::Elasticsearch - Log to Elasticsearch
 
+This package contains two modules, that provide ability to write log entries to Elasticsearch.
+
+  * Log::Log4perl::Appender::Elasticsearch sends log entries via <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-index_.html">Indes API</a>.
+
+  * Log::Log4perl::Appender::Elasticsearch::Bulk does the same task by using <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/docs-bulk.html">Bulk API</a>.
+
+
 ```perl
 use Log::Log4perl;
 
