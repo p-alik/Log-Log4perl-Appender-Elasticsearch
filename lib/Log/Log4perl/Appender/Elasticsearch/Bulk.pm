@@ -16,6 +16,14 @@ Log::Log4perl::Appender::Elasticsearch::Bulk
 
 This appender is based on L<Log::Log4perl::Appender::Elasticsearch>. It buffers the log entries and flush by certain buffer size or on destroy.
 
+=head1 VERSION
+
+Version 0.07
+
+=cut
+
+$Log::Log4perl::Appender::Elasticsearch::VERSION = '0.07';
+
 =head1 OPTIONS
 
 =over 4

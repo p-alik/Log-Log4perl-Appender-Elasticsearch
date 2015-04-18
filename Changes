@@ -18,3 +18,7 @@ Revision history for Log-Log4perl-Appender-Elasticsearch
 
 0.06    2015-01-16
         bufix v0.05 add Log::Log4perl::Appender::Elasticsearch::Bulk to MANIFEST
+
+0.07    2015-04-18
+        add VERSION number into Log::Log4perl::Appender::Elasticsearch::Bulk
+        minor pod modification

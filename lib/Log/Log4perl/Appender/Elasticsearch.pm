@@ -25,11 +25,11 @@ L<Log::Log4perl::Appender::Elasticsearch::Bulk> does the same task by using L<Bu
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
-$Log::Log4perl::Appender::Elasticsearch::VERSION = '0.06';
+$Log::Log4perl::Appender::Elasticsearch::VERSION = '0.07';
 
 =head1 SYNOPSIS
 
@@ -97,13 +97,15 @@ use_https
 
 0|1 global https setting for all nodes
 
-the individual https setting possible too: C<log4perl.appender.ES.nodes = https://user:password@node1:9200,localhost:9200>
+the individual https setting possible too:
+
+C<log4perl.appender.ES.nodes = https://user:password@node1:9200,localhost:9200>
 
 =item
 
 user_agent
 
-LWP::UserAgent parameters.
+LWP::UserAgent parameters
 
 C<log4perl.appender.ES.user_agent.timeout = 5>
 
