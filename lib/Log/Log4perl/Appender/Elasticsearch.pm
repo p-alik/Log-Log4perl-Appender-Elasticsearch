@@ -130,6 +130,24 @@ sub new {
     return $self;
 } ## end sub new
 
+sub index {
+    my ($self, $index) = @_;
+    if (defined $index) {
+        $self->{_index} = $index;
+    }
+
+    return $self->{_index};
+} ## end sub index
+
+sub type {
+    my ($self, $type) = @_;
+    if (defined $type) {
+        $self->{_type} = $type;
+    }
+
+    return $self->{_type};
+} ## end sub type
+
 sub log {
     my ($self, %p) = @_;
     $self->_send_request($self->_to_json($self->_prepare_body(%p)));
@@ -155,7 +173,7 @@ sub _init {
     foreach my $k (qw/index type/) {
         my $v = delete($p{$k});
         $v || Carp::croak("Log4perl: $k not set in ", __PACKAGE__);
-        $self->{"_$k"} = $v;
+        $self->$k($v);
     }
 
     my $b = delete($p{body});
