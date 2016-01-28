@@ -38,7 +38,9 @@ subtest 'log', sub {
     ok(Log::Log4perl->init(\<<"EOCFG"), 'Log::Log4perl->init');
 
 log4perl.logger=DEBUG, ES
+log4perl.category.Foo = INFO, ES2
 
+# default logger
 log4perl.appender.ES = Log::Log4perl::Appender::Elasticsearch
 log4perl.appender.ES.layout = Log::Log4perl::Layout::NoopLayout
 
@@ -54,12 +56,35 @@ log4perl.appender.ES.use_https = 0
 log4perl.appender.ES.ua.timeout = 5
 
 log4perl.appender.ES.headers.User-Agent = foo
+
+# Foo category cfg
+log4perl.appender.ES2 = Log::Log4perl::Appender::Elasticsearch
+log4perl.appender.ES2.layout = Log::Log4perl::Layout::NoopLayout
+
+log4perl.appender.ES2.body.level = %p
+log4perl.appender.ES2.body.module = %M
+log4perl.appender.ES2.body.line = %L
+
+log4perl.appender.ES2.nodes = $ENV{LOG2NODE}
+log4perl.appender.ES2.index = log4perl2
+log4perl.appender.ES2.type = entry
+
 EOCFG
 
-    ok(my $l = Log::Log4perl::get_logger(), 'Log::Log4perl::get_logger()');
+    ok(my $l = Log::Log4perl::get_logger(), 'Log::Log6perl::get_logger()');
     foreach (qw/error info debug/) {
-        ok $l->$_("OK"), "$_('$_ Message')";
+        ok($l->$_("OK"), "$_('$_ Message')");
     }
+
+    ok(
+        $l = Log::Log4perl::get_logger("Foo"),
+        'Log::Log6perl::get_logger("Foo")'
+    );
+
+    # ok(!$l->debug("OK"), "!debug('Foo')");
+    # foreach (qw/error info/) {
+    #     ok($l->$_("OK"), "$_('$_ Message')");
+    # }
 };
 
 done_testing();
