@@ -32,6 +32,9 @@ ok(my $uri = $app->_uri($app->{_nodes}[0], join('-', 'foo', int(rand(100)))),
     '_uri');
 ok(my $h = $app->_headers($uri), '_headers');
 
+is($app->index(), $args{'index'});
+is($app->type(),  $args{'type'});
+
 subtest 'log', sub {
     $ENV{LOG2NODE} || plan skip_all => 'log without $ENV{LOG2NODE}';
 
