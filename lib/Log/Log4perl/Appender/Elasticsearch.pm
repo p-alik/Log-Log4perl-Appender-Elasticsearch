@@ -25,11 +25,11 @@ L<Log::Log4perl::Appender::Elasticsearch::Bulk> does the same task by using L<Bu
 
 =head1 VERSION
 
-Version 0.07
+Version 0.08
 
 =cut
 
-$Log::Log4perl::Appender::Elasticsearch::VERSION = '0.07';
+$Log::Log4perl::Appender::Elasticsearch::VERSION = '0.08';
 
 =head1 SYNOPSIS
 
