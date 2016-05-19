@@ -1,6 +1,8 @@
 Log::Log4perl::Appender::Elasticsearch - Log to Elasticsearch
 
+[![CPAN version](https://badge.fury.io/pl/Log-Log4perl-Appender-Elasticsearch.png)](https://badge.fury.io/pl/Log-Log4perl-Appender-Elasticsearch)
 [![Build Status](https://travis-ci.org/p-alik/Log-Log4perl-Appender-Elasticsearch.png)](https://travis-ci.org/p-alik/Log-Log4perl-Appender-Elasticsearch)
+[![Coverage Status](https://coveralls.io/repos/github/p-alik/Log-Log4perl-Appender-Elasticsearch/badge.png)](https://coveralls.io/github/p-alik/Log-Log4perl-Appender-Elasticsearch)
 
 This package contains two modules, that provide ability to write log entries to Elasticsearch.
 
