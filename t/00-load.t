@@ -1,17 +1,22 @@
-#!perl -T
 use 5.006;
 use strict;
 use warnings FATAL => 'all';
 use Test::More;
+use version();
 
-plan tests => 2;
+plan tests => 4;
 
-BEGIN {
-    use_ok('Log::Log4perl::Appender::Elasticsearch')
-        && use_ok('Log::Log4perl::Appender::Elasticsearch::Bulk')
-        || print "Bail out!\n";
-}
+my @mn = qw/
+    Log::Log4perl::Appender::Elasticsearch
+    Log::Log4perl::Appender::Elasticsearch::Bulk
+    /;
 
-diag(
-    "Testing Log::Log4perl::Appender::Elasticsearch $Log::Log4perl::Appender::Elasticsearch::VERSION, Perl $], $^X"
-);
+my $v = version->parse("0.09");
+
+foreach my $n (@mn) {
+    use_ok($n);
+    my $_v = eval '$' . $n . '::VERSION';
+    diag("Testing $n $v, Perl $], $^X");
+    is($_v, $v, "$n version is $v");
+} ## end foreach my $n (@mn)
+
