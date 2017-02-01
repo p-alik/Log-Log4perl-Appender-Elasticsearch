@@ -63,7 +63,7 @@ sub _flush {
     scalar(@{$buff}) || return;
 
     foreach (@{$buff}) {
-        $data .= join $/, '{"create":{}}', $self->_to_json($_), '';
+        $data .= join $/, '{"index":{}}', $self->_to_json($_), '';
     }
 
     if (_INTERNAL_DEBUG) {
