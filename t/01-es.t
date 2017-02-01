@@ -83,11 +83,6 @@ EOCFG
         $l = Log::Log4perl::get_logger("Foo"),
         'Log::Log6perl::get_logger("Foo")'
     );
-
-    # ok(!$l->debug("OK"), "!debug('Foo')");
-    # foreach (qw/error info/) {
-    #     ok($l->$_("OK"), "$_('$_ Message')");
-    # }
 };
 
 done_testing();
