@@ -1,4 +1,6 @@
 package Log::Log4perl::Appender::Elasticsearch::Bulk;
+use version ();
+$Log::Log4perl::Appender::Elasticsearch::Bulk::VERSION = version->parse("0.09");
 
 use 5.006;
 use strict;
@@ -6,7 +8,7 @@ use warnings;
 
 use constant _INTERNAL_DEBUG => 0;
 
-use base 'Log::Log4perl::Appender::Elasticsearch';
+use base "Log::Log4perl::Appender::Elasticsearch";
 
 =head1 NAME
 
@@ -18,11 +20,9 @@ This appender is based on L<Log::Log4perl::Appender::Elasticsearch>. It buffers 
 
 =head1 VERSION
 
-Version 0.07
+Version 0.09
 
 =cut
-
-$Log::Log4perl::Appender::Elasticsearch::VERSION = '0.07';
 
 =head1 OPTIONS
 
